@@ -75,7 +75,12 @@ export const updateProduct = (request, response) => {
     .send(`Updating a product of id: ${id} with data: ${body}`);
 };
 
-export const deleteProduct = (request, response) => {
+export const deleteProduct = async (request, response) => {
   let { id } = request.params;
-  response.status(202).send(`Updating a product of id: ${id}`);
+
+  let product = await Product.findByIdAndDelete(id);
+  if (!product) return response.status(404).send("Product not found");
+
+  //  const result = await User.findByIdAndDelete(id);
+  response.status(202).send(`Product deleted: ${id}`);
 };
