@@ -1,0 +1,13 @@
+The Steps:
+
+1. init an NPM project and add dependencies:
+   express, dotenv and moongose
+
+2. Set Up MongoDB Atlas:
+   https://www.mongodb.com/cloud/atlas/register
+   choose a free subscription for the account as well
+   save the credentials for MongoDB as well
+
+3. Install and setup MongoDb compass with relevant details.
+
+4. Create a database and connect to it with MongoDB compass
