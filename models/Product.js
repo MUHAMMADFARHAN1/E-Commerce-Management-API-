@@ -6,11 +6,11 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    slug: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    // slug: {
+    //   type: String,
+    //   required: true,
+    //   unique: true,
+    // },
     description: {
       type: String,
       required: true,
@@ -40,3 +40,7 @@ const productSchema = new mongoose.Schema(
 
 //export default mongoose.model("Product", productSchema);
 export default mongoose.model("Product", productSchema, "Products");
+
+// E11000 duplicate key error collection: Books.Products index: slug_1 dup key: { slug: null }
+// happens when the schema is fixed on mongoDB side and can only be fixed by deleting the DB altogether.
+// As imlciitly the value is fixed
