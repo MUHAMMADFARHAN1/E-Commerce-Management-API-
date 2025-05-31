@@ -17,3 +17,5 @@ The Steps:
 
 6. Run the server with connection to the database to check if the 
    connection was successful or not.
+
+7. Create a database schema using draw.io and relations.
