@@ -11,3 +11,8 @@ The Steps:
 3. Install and setup MongoDb compass with relevant details.
 
 4. Create a database and connect to it with MongoDB compass
+
+5. Create a .env file with the url of the database, make sure it is 
+   in root folder or as same level as package.json
+
+6. 
