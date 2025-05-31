@@ -9,6 +9,7 @@ export const createOrder = async (request, response) => {
     // I generate slug from title
     // let slug =  name.replaceAll(" ", "-").toLowerCase() + "-" + new Date().getTime();
     // I create the product
+
     await Order.create({
       products,
       totalPrice,
@@ -24,8 +25,8 @@ export const createOrder = async (request, response) => {
 //Basic fetching
 export const getOrders = async (request, response) => {
   try {
-    let products = await Order.find();
-    return response.send(products);
+    let orders = await Order.find();
+    return response.send(orders);
   } catch (error) {
     return response.status(500).send("Server Error");
   }
