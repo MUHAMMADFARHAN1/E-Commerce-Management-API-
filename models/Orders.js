@@ -27,5 +27,13 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
+//Quantity Adjustment is needed here, refresh the MongoDB to get the new schema as well!
+// products: [
+//     {
+//       product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+//       quantity: { type: Number, default: 1, min: 1 }
+//     }
+//   ],
+
 //export default mongoose.model("Order", orderSchema);
 export default mongoose.model("Order", orderSchema);
