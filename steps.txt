@@ -19,3 +19,5 @@ The Steps:
    connection was successful or not.
 
 7. Create a database schema using draw.io and relations.
+
+8. Implement the model for the moongose as per the generated database.
