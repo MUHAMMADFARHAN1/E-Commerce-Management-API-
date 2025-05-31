@@ -6,11 +6,11 @@ const orderSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    slug: {
-      type: String,
-      required: true,
-      unique: true,
-    },
+    // slug: {
+    //   type: String,
+    //   required: true,
+    //   unique: true,
+    // },
     totalPrice: {
       type: Number,
       required: true,
@@ -25,4 +25,5 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Order", orderSchema);
+//export default mongoose.model("Order", orderSchema);
+export default mongoose.model("Order", orderSchema, "Products");
