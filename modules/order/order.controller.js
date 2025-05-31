@@ -1,4 +1,5 @@
 import Order from "../../models/Orders.js";
+import Product from "../../models/Product.js";
 
 export const createOrder = async (request, response) => {
   try {
@@ -9,6 +10,10 @@ export const createOrder = async (request, response) => {
     // I generate slug from title
     // let slug =  name.replaceAll(" ", "-").toLowerCase() + "-" + new Date().getTime();
     // I create the product
+    // https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
+    let product = await Product.find();
+    let isFound = products.some((ai) => product.includes(ai));
+    if (!isFound) return response.status(404).send("Invalid Product Entered!");
 
     await Order.create({
       products,
