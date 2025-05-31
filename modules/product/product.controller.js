@@ -67,14 +67,24 @@ export const createProduct = async (request, response) => {
   }
 };
 
-export const updateProduct = (request, response) => {
+// https://mongoosejs.com/docs/tutorials/findoneandupdate.html
+//https://kb.objectrocket.com/mongo-db/how-to-use-the-mongoose-findoneandupdate-method-925
+export const updateProduct = async (request, response) => {
   let { id } = request.params;
+  let { name, description, price, quantity, createdAt } = request.body;
+
   let body = request.body;
+  await Product.findOneAndUpdate(
+    { _id: id },
+    { name, description, price, quantity, createdAt }
+  );
+
   response
     .status(202)
     .send(`Updating a product of id: ${id} with data: ${body}`);
 };
 
+//https://stackoverflow.com/questions/76980190/how-do-i-delete-a-document-in-mongodb-using-mongoose-in-node-js
 export const deleteProduct = async (request, response) => {
   let { id } = request.params;
 
