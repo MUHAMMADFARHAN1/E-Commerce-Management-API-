@@ -4,7 +4,7 @@ import {
   deleteOrder,
   getOrder,
   getOrders,
-  //   updateProduct,
+  updateOrder,
 } from "../modules/order/order.controller.js";
 
 const router = express.Router();
@@ -18,7 +18,7 @@ router.get("/:id", getOrder);
 
 router.post("/", createOrder);
 
-// router.put("/:id", updateProduct);
+router.put("/:id", updateOrder);
 
 router.delete("/:id", deleteOrder);
 

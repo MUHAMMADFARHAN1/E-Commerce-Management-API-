@@ -48,9 +48,24 @@ export const getOrder = async (request, response) => {
 export const deleteOrder = async (request, response) => {
   let { id } = request.params;
 
-  let product = await Product.findByIdAndDelete(id);
-  if (!product) return response.status(404).send("Product not found");
+  let product = await Order.findByIdAndDelete(id);
+  if (!product) return Order.status(404).send("Product not found");
 
   //  const result = await User.findByIdAndDelete(id);
   response.status(202).send(`Product deleted: ${id}`);
+};
+
+export const updateOrder = async (request, response) => {
+  let { id } = request.params;
+  let { products, totalPrice, createdAt } = request.body;
+
+  let body = request.body;
+  await Order.findOneAndUpdate(
+    { _id: id },
+    { products, totalPrice, createdAt }
+  );
+
+  response
+    .status(202)
+    .send(`Updating a product of id: ${id} with data: ${body}`);
 };
