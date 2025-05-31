@@ -49,3 +49,9 @@ Orders:
     "totalPrice": "5",
     "createdAt": "01/12/2022"
   }
+
+
+
+Things to do:
+- Calculation of price in the order is to be done.
+- Service Layer refactoring 
