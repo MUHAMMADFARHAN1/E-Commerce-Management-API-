@@ -15,4 +15,5 @@ The Steps:
 5. Create a .env file with the url of the database, make sure it is 
    in root folder or as same level as package.json
 
-6. 
+6. Run the server with connection to the database to check if the 
+   connection was successful or not.
