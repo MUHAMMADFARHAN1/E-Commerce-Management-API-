@@ -54,6 +54,17 @@ export const getOrders = async (request, response) => {
   }
 };
 
+export const getUserOrders = async (request, response) => {
+  try {
+    let userId = request.user._id;
+    // console.log(userId);
+    let orders = await Order.find({ userId });
+    return response.send(orders);
+  } catch (error) {
+    return response.status(500).send("Server Error");
+  }
+};
+
 export const getOrder = async (request, response) => {
   let { id } = request.params;
   // In case you are fetching with id

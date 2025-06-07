@@ -5,12 +5,15 @@ import {
   getOrder,
   getOrders,
   updateOrder,
+  getUserOrders,
 } from "../modules/order/order.controller.js";
 import { AuthGuard, RoleGuard } from "../modules/auth/auth.middleware.js";
 
 const router = express.Router();
 
 router.get("/", AuthGuard, getOrders);
+
+router.get("/user", AuthGuard, getUserOrders);
 
 router.get("/:id", AuthGuard, getOrder);
 
