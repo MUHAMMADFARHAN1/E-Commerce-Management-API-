@@ -3,7 +3,9 @@ import Product from "../../models/Product.js";
 
 export const createOrder = async (request, response) => {
   try {
-    let { products, user, totalPrice, createdAt } = request.body;
+    let { products, totalPrice, createdAt } = request.body;
+
+    let userId = request.user._id;
     // let userId = request.headers.authorization;
     // I check if user is authorized
     // if (!userId) return response.status(401).send("Unauthorized");
@@ -15,7 +17,7 @@ export const createOrder = async (request, response) => {
     // let isFound = products.some((ai) => product.includes(ai));
     // if (!isFound) return response.status(404).send("Invalid Product Entered!");
 
-    if (products.every((subarr) => subarr.length !== 19)) {
+    if (products.every((subarr) => subarr.length !== 24)) {
       // then no array with length 7 exists
       return response.status(404).send("Invalid Product Entered!");
     }
@@ -32,8 +34,8 @@ export const createOrder = async (request, response) => {
     await Order.create({
       products,
       totalPrice,
-      user,
       createdAt,
+      userId,
     });
     response.status(201).send(`Product created successfully`);
   } catch (error) {
