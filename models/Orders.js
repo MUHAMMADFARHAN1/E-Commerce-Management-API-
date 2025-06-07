@@ -15,6 +15,10 @@ const orderSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    user: {
+      type: String,
+      required: true,
+    },
     products: [
       {
         type: mongoose.Schema.Types.ObjectId,

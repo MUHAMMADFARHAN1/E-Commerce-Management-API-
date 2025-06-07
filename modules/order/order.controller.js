@@ -3,10 +3,10 @@ import Product from "../../models/Product.js";
 
 export const createOrder = async (request, response) => {
   try {
-    let { products, totalPrice, createdAt } = request.body;
-    let userId = request.headers.authorization;
+    let { products, user, totalPrice, createdAt } = request.body;
+    // let userId = request.headers.authorization;
     // I check if user is authorized
-    if (!userId) return response.status(401).send("Unauthorized");
+    // if (!userId) return response.status(401).send("Unauthorized");
     // I generate slug from title
     // let slug =  name.replaceAll(" ", "-").toLowerCase() + "-" + new Date().getTime();
     // I create the product
@@ -18,6 +18,7 @@ export const createOrder = async (request, response) => {
     await Order.create({
       products,
       totalPrice,
+      user,
       createdAt,
     });
     response.status(201).send(`Product created successfully`);
