@@ -11,9 +11,23 @@ export const createOrder = async (request, response) => {
     // let slug =  name.replaceAll(" ", "-").toLowerCase() + "-" + new Date().getTime();
     // I create the product
     // https://stackoverflow.com/questions/16312528/check-if-an-array-contains-any-element-of-another-array-in-javascript
-    let product = await Product.find();
-    let isFound = products.some((ai) => product.includes(ai));
-    if (!isFound) return response.status(404).send("Invalid Product Entered!");
+    // let product = await Product.find();
+    // let isFound = products.some((ai) => product.includes(ai));
+    // if (!isFound) return response.status(404).send("Invalid Product Entered!");
+
+    if (products.every((subarr) => subarr.length !== 19)) {
+      // then no array with length 7 exists
+      return response.status(404).send("Invalid Product Entered!");
+    }
+
+    const docs = await Product.find({
+      _id: { $in: products },
+    }).exec();
+
+    console.log(docs);
+
+    if (docs.length != products.length)
+      return response.status(404).send("Invalid Product Entered!");
 
     await Order.create({
       products,
