@@ -6,17 +6,18 @@ import {
   getOrders,
   updateOrder,
 } from "../modules/order/order.controller.js";
+import { AuthGuard, RoleGuard } from "../modules/auth/auth.middleware.js";
 
 const router = express.Router();
 
-router.get("/", getOrders);
+router.get("/", AuthGuard, getOrders);
 
-router.get("/:id", getOrder);
+router.get("/:id", AuthGuard, getOrder);
 
 //The slug is for findone method not for id where it will work
 //router.get("/:slug", getProduct);
 
-router.post("/", createOrder);
+router.post("/", AuthGuard, createOrder);
 
 router.put("/:id", updateOrder);
 
